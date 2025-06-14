@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "worklogs",
+  "info": {
+    "singularName": "worklog",
+    "pluralName": "worklogs",
+    "displayName": "Worklog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "feature_tags": {
+      "type": "json"
+    },
+    "linear_tickets": {
+      "type": "json"
+    },
+    "code_references": {
+      "type": "json"
+    }
+  }
+}
