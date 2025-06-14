@@ -369,6 +369,80 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFeatureIdeationFeatureIdeation
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'feature_ideations';
+  info: {
+    displayName: 'Feature Ideation';
+    pluralName: 'feature-ideations';
+    singularName: 'feature-ideation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    concept: Schema.Attribute.String;
+    content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    linear_tickets: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::feature-ideation.feature-ideation'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    status_enum: Schema.Attribute.Enumeration<
+      ['ideation,planning,implementation,completed']
+    >;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiImplementationPlanImplementationPlan
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'implementation_plans';
+  info: {
+    displayName: 'Implementation Plan';
+    pluralName: 'implementation-plans';
+    singularName: 'implementation-plan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    estimated_effort: Schema.Attribute.String;
+    feature_ideation: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::feature-ideation.feature-ideation'
+    >;
+    linear_tickets: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::implementation-plan.implementation-plan'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    status_enum: Schema.Attribute.Enumeration<
+      ['draft,approved,in_progress,completed']
+    >;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiWorklogWorklog extends Struct.CollectionTypeSchema {
   collectionName: 'worklogs';
   info: {
@@ -911,6 +985,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::feature-ideation.feature-ideation': ApiFeatureIdeationFeatureIdeation;
+      'api::implementation-plan.implementation-plan': ApiImplementationPlanImplementationPlan;
       'api::worklog.worklog': ApiWorklogWorklog;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

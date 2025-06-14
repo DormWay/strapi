@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "feature_ideations",
+  "info": {
+    "singularName": "feature-ideation",
+    "pluralName": "feature-ideations",
+    "displayName": "Feature Ideation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "concept": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "linear_tickets": {
+      "type": "json"
+    },
+    "status_enum": {
+      "type": "enumeration",
+      "enum": [
+        "ideation,planning,implementation,completed"
+      ]
+    }
+  }
+}

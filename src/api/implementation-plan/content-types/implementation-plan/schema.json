@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "implementation_plans",
+  "info": {
+    "singularName": "implementation-plan",
+    "pluralName": "implementation-plans",
+    "displayName": "Implementation Plan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "feature_ideation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::feature-ideation.feature-ideation"
+    },
+    "linear_tickets": {
+      "type": "json"
+    },
+    "estimated_effort": {
+      "type": "string"
+    },
+    "status_enum": {
+      "type": "enumeration",
+      "enum": [
+        "draft,approved,in_progress,completed"
+      ]
+    }
+  }
+}
